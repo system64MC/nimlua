@@ -36,7 +36,7 @@ when false:
 
   {.pragma: ilua, importc: "lua$1".}
 
-  {.push callConv: cdecl, dynlib: lua.LIB_NAME.}
+  {.push callConv: cdecl.}
   proc open_base*(L: PState): cint{.ilua.}
   proc open_table*(L: PState): cint{.ilua.}
   proc open_io*(L: PState): cint{.ilua.}
