@@ -116,7 +116,7 @@ type                          # Type of Numbers in Lua
 
 {.pragma: ilua, importc: "lua_$1".}
 
-{.push callConv: cdecl, dynlib: LibName.}
+{.push callConv: cdecl.}
 #{.push importc: "lua_$1".}
 
 proc newstate*(f: Alloc, ud: pointer): PState {.ilua.}
@@ -285,7 +285,7 @@ type
 #** ======================================================================
 #
 
-{.push callConv: cdecl, dynlib: lua.LIB_NAME.}
+{.push callConv: cdecl.}
 
 proc getstack*(state: PState, level: cint, ar: PDebug): cint{.ilua.}
 proc getinfo*(state: PState, what: cstring, ar: PDebug): cint{.ilua.}
@@ -398,7 +398,7 @@ const
 
 {.pragma: ilualib, importc: "lua$1".}
 
-{.push callConv: cdecl, dynlib: lua.LIB_NAME.}
+{.push callConv: cdecl.}
 proc open_base*(state: PState): cint{.ilualib.}
 proc open_table*(state: PState): cint{.ilualib.}
 proc open_io*(state: PState): cint{.ilualib.}
@@ -467,7 +467,7 @@ type
   Preg* = ptr Treg
 
 
-{.push callConv: cdecl, dynlib: lua.LIB_NAME.}
+{.push callConv: cdecl.}
 {.push importc: "luaL_$1".}
 
 proc openlib*(state: PState, libname: cstring, lr: Preg, nup: cint)
@@ -548,7 +548,7 @@ proc putchar*(B: PBuffer, c: char)
   # warning: see note above about LUAL_BUFFERSIZE
 proc addsize*(B: PBuffer, n: cint)
 
-{.push callConv: cdecl, dynlib: lua.LIB_NAME, importc: "luaL_$1".}
+{.push callConv: cdecl, importc: "luaL_$1".}
 proc buffinit*(state: PState, B: PBuffer)
 proc prepbuffer*(B: PBuffer): cstring
 proc addlstring*(B: PBuffer, s: cstring, L: cint)
