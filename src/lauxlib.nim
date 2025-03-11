@@ -41,7 +41,7 @@ when false:
     Preg* = ptr Treg
 
 
-  {.push callConv: cdecl, dynlib: lua.LIB_NAME.}
+  {.push callConv: cdecl.}
   {.push importc: "luaL_$1".}
 
   proc openlib*(L: PState, libname: cstring, lr: Preg, nup: cint)
@@ -122,7 +122,7 @@ when false:
     # warning: see note above about LUAL_BUFFERSIZE
   proc addsize*(B: PBuffer, n: cint)
 
-  {.push callConv: cdecl, dynlib: lua.LIB_NAME, importc: "luaL_$1".}
+  {.push callConv: cdecl, importc: "luaL_$1".}
   proc buffinit*(L: PState, B: PBuffer)
   proc prepbuffer*(B: PBuffer): cstring
   proc addlstring*(B: PBuffer, s: cstring, L: cint)
